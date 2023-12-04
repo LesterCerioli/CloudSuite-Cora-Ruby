@@ -15,19 +15,20 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: satelitemg74367908
+  host: localhost
 
 development:
   <<: *default
-  database: cloudsuite_cora_development
+  database: coradb_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: cloudsuite_cora
+  #username: payments_api
 
   # The password associated with the PostgreSQL role (username).
   #password:
@@ -55,7 +56,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: cloudsuite_cora_test
+  database: coradb_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -79,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: cloudsuite_cora_production
-  username: cloudsuite_cora
-  password: <%= ENV["CLOUDSUITE_CORA_DATABASE_PASSWORD"] %>
+  database: coradb_prd
+  username: postgres
+  password: <%= ENV["CORADB_PASSWORD"] %>
